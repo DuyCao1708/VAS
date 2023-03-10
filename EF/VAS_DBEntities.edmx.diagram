@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="73d66f1cee8540d786a1ebea7b5df909" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="Model.BaoGiaVatTu" Width="1.5" PointX="6.75" PointY="1.25" />
+        <EntityTypeShape EntityType="Model.CuaHangVatTu" Width="1.5" PointX="1.25" PointY="1.5" />
+        <EntityTypeShape EntityType="Model.DanhMucVatTu" Width="1.5" PointX="8.875" PointY="1.25" />
+        <EntityTypeShape EntityType="Model.DiaChi" Width="1.5" PointX="0.5" PointY="5.375" />
+        <EntityTypeShape EntityType="Model.NguyenVatLieu" Width="1.5" PointX="19.25" PointY="1.375" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="17" PointY="2" />
+        <EntityTypeShape EntityType="Model.ThanhToanNganHang" Width="1.5" PointX="3.125" PointY="7.625" />
+        <EntityTypeShape EntityType="Model.ThanhToanTrucTiep" Width="1.5" PointX="3" PointY="4.875" />
+        <AssociationConnector Association="Model.FK_BaoGiaVatTu_CuaHangVatTu" />
+        <AssociationConnector Association="Model.FK_BaoGiaVatTu_DanhMucVatTu" />
+        <AssociationConnector Association="Model.FK_DiaChi_CuaHangVatTu1" />
+        <AssociationConnector Association="Model.FK_ThanhToanNganHang_CuaHangVatTu" />
+        <AssociationConnector Association="Model.FK_ThanhToanTrucTiep_CuaHangVatTu" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

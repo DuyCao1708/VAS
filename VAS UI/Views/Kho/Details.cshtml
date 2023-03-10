@@ -1,0 +1,110 @@
+﻿@model EF.NguyenVatLieu
+
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Nguyên vật liệu</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">Quản lí kho</li>
+            <li class="breadcrumb-item">Tổng kho</li>
+            <li class="breadcrumb-item">@Html.DisplayFor(model => model.Ten)</li>
+            <li class="breadcrumb-item active">Chi tiết</li>
+        </ol>
+    </div>
+    <div class="card mb-4 m-4">
+        <div class="card-header">
+            <i class="fa-solid fa-circle-info me-1"></i>
+            Thông tin @Html.DisplayFor(model => model.Ten)
+        </div>
+        <div class="card-body">
+            <div class="mt-0 mb-5">
+                <h6>
+                    @Html.DisplayNameFor(model => model.Ma_nguyen_vat_lieu)
+                </h6>
+                <p class="text-muted">
+                    @Html.DisplayFor(model => model.Ma_nguyen_vat_lieu)
+                    <hr />
+                </p>
+                <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Ten)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Ten)
+                            <hr />
+                        </p>
+
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Phan_loai)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Phan_loai)
+                            <hr />
+                        </p>
+
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Gia_don_vi)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Gia_don_vi)
+                            <hr />
+                        </p>
+
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Mo_ta)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Mo_ta)
+                            <hr />
+                        </p>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Ton_kho)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Ton_kho)
+                            <hr />
+                        </p>
+
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Nha_san_xuat)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Nha_san_xuat)
+                            <hr />
+                        </p>
+
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Gia_tri_tong)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Gia_tri_tong)
+                            <hr />
+                        </p>
+
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Thoi_gian)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Thoi_gian)
+                            <hr />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="m-4 position-absolute bottom-0 end-0">
+                <a href="@Url.Action("Edit", "Kho", new { id = Model.Ma_nguyen_vat_lieu })" class="btn btn-light mx-2" role="button" style="text-decoration: none" , title="Chỉnh sửa">
+                    <i class="fa-solid fa-pen-to-square text-secondary"></i>
+                </a>
+                <a href="@Url.Action("TongKho", "Kho")" class="btn btn-light mx-2" role="button" style="text-decoration: none" title="Quay lại">
+                    <i class="fa-solid fa-arrow-left text-secondary"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>

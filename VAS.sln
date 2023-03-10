@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33328.57
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAS UI", "VAS UI\VAS UI.csproj", "{CFDCBD0A-52E2-419F-B0F4-ECDC4F6CEF03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF", "EF\EF.csproj", "{91DD8BFE-6C32-4185-828E-2B3A442AE835}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFDCBD0A-52E2-419F-B0F4-ECDC4F6CEF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFDCBD0A-52E2-419F-B0F4-ECDC4F6CEF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFDCBD0A-52E2-419F-B0F4-ECDC4F6CEF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFDCBD0A-52E2-419F-B0F4-ECDC4F6CEF03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91DD8BFE-6C32-4185-828E-2B3A442AE835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91DD8BFE-6C32-4185-828E-2B3A442AE835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91DD8BFE-6C32-4185-828E-2B3A442AE835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91DD8BFE-6C32-4185-828E-2B3A442AE835}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3AF8C22C-882E-4989-9839-B2C153C4F4B4}
+	EndGlobalSection
+EndGlobal

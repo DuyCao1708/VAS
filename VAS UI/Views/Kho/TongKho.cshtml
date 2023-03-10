@@ -1,0 +1,109 @@
+﻿@model IEnumerable<EF.NguyenVatLieu>
+
+@{
+    ViewBag.Title = "Tổng Kho";
+}
+<main>
+
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Tổng kho</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">Quản lí kho</li>
+            <li class="breadcrumb-item active">Tổng kho</li>
+        </ol>
+    </div>
+    <div class="card mb-4 m-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Tổng kho nguyên vật liệu
+        </div>
+        <div class="card-body" style="overflow-x: auto">
+            <table id="inventory-datatable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ma_nguyen_vat_lieu)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ten)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phan_loai)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nha_san_xuat)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ton_kho)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Gia_don_vi)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.Gia_tri_tong)
+                            </th>*@
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.Mo_ta)
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.Thoi_gian)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ma_nguyen_vat_lieu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phan_loai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nha_san_xuat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ton_kho)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gia_don_vi)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Gia_tri_tong)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mo_ta)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Thoi_gian)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Kho", new { id = item.Ma_nguyen_vat_lieu })" class="mx-2" style="text-decoration: none" title="Chỉnh sửa">
+                                <i class="fa-solid fa-pen-to-square text-secondary"></i>
+                            </a>
+                            <a href="@Url.Action("Details", "Kho", new { id = item.Ma_nguyen_vat_lieu})" class="mx-2" style="text-decoration: none" title="Chi tiêt">
+                                <i class="fa-solid fa-circle-info text-secondary"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", "Kho", new { id = item.Ma_nguyen_vat_lieu })" class="mx-2" style="text-decoration: none" title="Xóa">
+                                <i class="fa-solid fa-trash-can text-secondary"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</main>
+
+
+
+
+

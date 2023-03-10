@@ -1,0 +1,70 @@
+﻿@model IEnumerable<EF.BaoGiaVatTu>
+
+@{
+    ViewBag.Title = "BaoGia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BaoGia</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Gia_goc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chiet_khau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gia_chiet_khau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ghi_chu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thoi_gian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuaHangVatTu.Ten_cua_hang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DanhMucVatTu.Ten_vat_tu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gia_goc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chiet_khau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gia_chiet_khau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ghi_chu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Thoi_gian)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CuaHangVatTu.Ten_cua_hang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DanhMucVatTu.Ten_vat_tu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Ma_bao_gia_vat_tu }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Ma_bao_gia_vat_tu }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Ma_bao_gia_vat_tu })
+        </td>
+    </tr>
+}
+
+</table>
