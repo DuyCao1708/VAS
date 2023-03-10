@@ -26,6 +26,10 @@ namespace VAS_UI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == id);
+            if (VatTu == null)
+            {
+                return HttpNotFound();
+            }
             return View(VatTu);
         }
 
@@ -86,6 +90,10 @@ namespace VAS_UI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == id);
+            if (VatTu == null)
+            {
+                return HttpNotFound();
+            }
             #region ViewBag
             var quyChuan = VAS_DBInstance.Instance.Database.DanhMucVatTu.Select(x => x.Quy_chuan.ToString()).Distinct().ToList();
             var QuyChuan = DropDownList.DdList(quyChuan);
@@ -110,6 +118,10 @@ namespace VAS_UI.Controllers
             {
                 // TODO: Add update logic here
                 var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == item.Ma_vat_tu);
+                if (VatTu == null)
+                {
+                    return HttpNotFound();
+                }
                 VatTu.Ten_vat_tu = item.Ten_vat_tu;
                 VatTu.Chung_loai = item.Chung_loai;
                 VatTu.Quy_chuan = item.Quy_chuan;
