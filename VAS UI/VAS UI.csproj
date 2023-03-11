@@ -127,15 +127,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaoGiaVatTuController.cs" />
-    <Compile Include="Controllers\StringConvert.cs" />
+    <Compile Include="Controllers\CuaHangVatTuController.cs" />
     <Compile Include="Controllers\DanhMucVatTuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\DropDownList.cs" />
+    <Compile Include="Logic_Functions\DropDownList.cs" />
+    <Compile Include="Models\BaoGiaVatTu.cs" />
+    <Compile Include="Models\CuaHangVatTu.cs" />
     <Compile Include="Models\DanhMucVatTu.cs" />
+    <Compile Include="Models\DiaChi.cs" />
+    <Compile Include="Models\ThanhToanNganHang.cs" />
+    <Compile Include="Models\ThanhToanTrucTiep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2334,10 +2339,11 @@
     <Content Include="Views\Kho\Edit.cshtml" />
     <Content Include="Views\DanhMucVatTu\VatTu.cshtml" />
     <Content Include="Views\BaoGiaVatTu\BaoGia.cshtml" />
-    <Content Include="Views\DanhMucVatTu\Details.cshtml" />
     <Content Include="Views\DanhMucVatTu\Edit.cshtml" />
     <Content Include="Views\DanhMucVatTu\Delete.cshtml" />
     <Content Include="Views\DanhMucVatTu\Create.cshtml" />
+    <Content Include="Views\CuaHangVatTu\CuaHang.cshtml" />
+    <Content Include="Views\DanhMucVatTu\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

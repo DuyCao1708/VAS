@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EF
+namespace VAS_UI.Models
 {
     using System;
     using System.Collections.Generic;

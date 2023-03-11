@@ -25,7 +25,6 @@ namespace EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BaoGiaVatTu> BaoGiaVatTu { get; set; }
         public virtual DbSet<CuaHangVatTu> CuaHangVatTu { get; set; }
         public virtual DbSet<DanhMucVatTu> DanhMucVatTu { get; set; }
         public virtual DbSet<DiaChi> DiaChi { get; set; }
@@ -33,5 +32,6 @@ namespace EF
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<ThanhToanNganHang> ThanhToanNganHang { get; set; }
         public virtual DbSet<ThanhToanTrucTiep> ThanhToanTrucTiep { get; set; }
+        public virtual DbSet<BaoGiaVatTu> BaoGiaVatTu { get; set; }
     }
 }

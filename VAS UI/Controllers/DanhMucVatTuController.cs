@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using VAS_UI.Logic_Functions;
 
 namespace VAS_UI.Controllers
 {
@@ -19,13 +20,13 @@ namespace VAS_UI.Controllers
         }
 
         // GET: DanhMucVatTu/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == id);
+            var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.ID_Vat_tu == id);
             if (VatTu == null)
             {
                 return HttpNotFound();
@@ -37,17 +38,9 @@ namespace VAS_UI.Controllers
         public ActionResult Create()
         {
             #region ViewBag
-            var quyChuan = VAS_DBInstance.Instance.Database.DanhMucVatTu.Select(x => x.Quy_chuan.ToString()).Distinct().ToList();
-            var QuyChuan = DropDownList.DdList(quyChuan);
-            ViewBag.QuyChuanList = QuyChuan;
-
-            var chungLoai = VAS_DBInstance.Instance.Database.DanhMucVatTu.Select(x => x.Chung_loai.ToString()).Distinct().ToList();
-            var ChungLoai = DropDownList.DdList(chungLoai);
-            ViewBag.ChungLoaiList = ChungLoai;
-
-            var donVi = VAS_DBInstance.Instance.Database.DanhMucVatTu.Select(x => x.Don_vi_tinh.ToString()).Distinct().ToList();
-            var DonVi = DropDownList.DdList(donVi);
-            ViewBag.DonViList = DonVi;
+            ViewBag.QuyChuanList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Quy_chuan);
+            ViewBag.ChungLoaiList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Chung_loai);
+            ViewBag.DonViList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Don_vi_tinh);
             #endregion
             return View();
         }
@@ -59,11 +52,6 @@ namespace VAS_UI.Controllers
             try
             {
                 // TODO: Add insert logic here
-                newVatTu.Ma_vat_tu = StringConvert.convertToUnSign3(newVatTu.Ten_vat_tu).ToUpper().Replace(" ", "");
-                if (!(newVatTu.Quy_chuan is null)) {
-                    newVatTu.Ma_vat_tu += StringConvert.convertToUnSign3(newVatTu.Quy_chuan).ToUpper().Replace(" ", "");
-                };
-                newVatTu.Thoi_gian = DateTime.Now;
                 if (ModelState.IsValid)
                 {
                     VAS_DBInstance.Instance.Database.DanhMucVatTu.Add(newVatTu);
@@ -83,29 +71,21 @@ namespace VAS_UI.Controllers
         }
 
         // GET: DanhMucVatTu/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == id);
+            var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.ID_Vat_tu == id);
             if (VatTu == null)
             {
                 return HttpNotFound();
             }
             #region ViewBag
-            var quyChuan = VAS_DBInstance.Instance.Database.DanhMucVatTu.Select(x => x.Quy_chuan.ToString()).Distinct().ToList();
-            var QuyChuan = DropDownList.DdList(quyChuan);
-            ViewBag.QuyChuanList = QuyChuan;
-
-            var chungLoai = VAS_DBInstance.Instance.Database.DanhMucVatTu.Select(x => x.Chung_loai.ToString()).Distinct().ToList();
-            var ChungLoai = DropDownList.DdList(chungLoai);
-            ViewBag.ChungLoaiList = ChungLoai;
-
-            var donVi = VAS_DBInstance.Instance.Database.DanhMucVatTu.Select(x => x.Don_vi_tinh.ToString()).Distinct().ToList();
-            var DonVi = DropDownList.DdList(donVi);
-            ViewBag.DonViList = DonVi;
+            ViewBag.QuyChuanList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Quy_chuan);
+            ViewBag.ChungLoaiList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Chung_loai);
+            ViewBag.DonViList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Don_vi_tinh);
             #endregion
             return View(VatTu);
         }
@@ -117,21 +97,17 @@ namespace VAS_UI.Controllers
             try
             {
                 // TODO: Add update logic here
-                var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == item.Ma_vat_tu);
+                var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.ID_Vat_tu == item.ID_Vat_tu);
                 if (VatTu == null)
                 {
                     return HttpNotFound();
                 }
+                VatTu.Ma_vat_tu = item.Ma_vat_tu;
                 VatTu.Ten_vat_tu = item.Ten_vat_tu;
                 VatTu.Chung_loai = item.Chung_loai;
                 VatTu.Quy_chuan = item.Quy_chuan;
-                if (!(item.Quy_chuan is null))
-                {
-                    VatTu.Ma_vat_tu += StringConvert.convertToUnSign3(item.Quy_chuan).ToUpper().Replace(" ", "");
-                };
                 VatTu.Don_vi_tinh = item.Don_vi_tinh;
                 VatTu.Ghi_chu = item.Ghi_chu;
-                VatTu.Thoi_gian = DateTime.Now;
                 VAS_DBInstance.Instance.Database.Entry(VatTu).State = System.Data.Entity.EntityState.Modified;
                 VAS_DBInstance.Instance.Database.SaveChanges();
                 return RedirectToAction("VatTu");
@@ -143,13 +119,13 @@ namespace VAS_UI.Controllers
         }
 
         // GET: DanhMucVatTu/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == id);
+            var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.ID_Vat_tu == id);
             if (VatTu == null)
             {
                 return HttpNotFound();
@@ -159,14 +135,14 @@ namespace VAS_UI.Controllers
 
         // POST: DanhMucVatTu/Delete/5
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
             try
             {
                 //TODO: Add delete logic here
 
-                var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == id);
-                VAS_DBInstance.Instance.Database.BaoGiaVatTu.RemoveRange(VAS_DBInstance.Instance.Database.BaoGiaVatTu.Where(x => x.Ma_vat_tu == id));
+                var VatTu = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.ID_Vat_tu == id);
+                VAS_DBInstance.Instance.Database.BaoGiaVatTu.RemoveRange(VAS_DBInstance.Instance.Database.BaoGiaVatTu.Where(x => x.ID_Vat_tu == id));
                 VAS_DBInstance.Instance.Database.DanhMucVatTu.Remove(VatTu);
                 VAS_DBInstance.Instance.Database.SaveChanges();
                 return RedirectToAction("VatTu");

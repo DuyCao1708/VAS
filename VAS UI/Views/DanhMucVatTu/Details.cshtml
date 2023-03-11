@@ -25,10 +25,10 @@
                 <div class="row pt-1">
                     <div class="col-6 mb-3">
                         <h6>
-                            @Html.DisplayNameFor(model => model.Ten_vat_tu)
+                            @Html.DisplayNameFor(model => model.Ma_vat_tu)
                         </h6>
                         <p class="text-muted">
-                            @Html.DisplayFor(model => model.Ten_vat_tu)
+                            @Html.DisplayFor(model => model.Ma_vat_tu)
                             <hr />
                         </p>
 
@@ -37,23 +37,6 @@
                         </h6>
                         <p class="text-muted">
                             @Html.DisplayFor(model => model.Quy_chuan)
-                            <hr />
-                        </p>
-
-                        <h6>
-                            @Html.DisplayNameFor(model => model.Ghi_chu)
-                        </h6>
-                        <p class="text-muted">
-                            @Html.DisplayFor(model => model.Ghi_chu)
-                            <hr />
-                        </p>
-                    </div>
-                    <div class="col-6 mb-3">
-                        <h6>
-                            @Html.DisplayNameFor(model => model.Chung_loai)
-                        </h6>
-                        <p class="text-muted">
-                            @Html.DisplayFor(model => model.Chung_loai)
                             <hr />
                         </p>
 
@@ -73,10 +56,35 @@
                             <hr />
                         </p>
                     </div>
+                    <div class="col-6 mb-3">
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Ten_vat_tu)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Ten_vat_tu)
+                            <hr />
+                        </p>
+
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Chung_loai)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Chung_loai)
+                            <hr />
+                        </p>
+
+                        <h6>
+                            @Html.DisplayNameFor(model => model.Ghi_chu)
+                        </h6>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Ghi_chu)
+                            <hr />
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="m-4 position-absolute bottom-0 end-0">
-                <a href="@Url.Action("Edit", "DanhMucVatTu", new { id = Model.Ma_vat_tu })" class="btn btn-light mx-2" role="button" style="text-decoration: none" , title="Chỉnh sửa">
+                <a href="@Url.Action("Edit", "DanhMucVatTu", new { id = Model.ID_Vat_tu })" class="btn btn-light mx-2" role="button" style="text-decoration: none" , title="Chỉnh sửa">
                     <i class="fa-solid fa-pen-to-square text-secondary"></i>
                 </a>
                 <a href="@Url.Action("VatTu", "DanhMucVatTu")" class="btn btn-light mx-2" role="button" style="text-decoration: none" title="Quay lại">

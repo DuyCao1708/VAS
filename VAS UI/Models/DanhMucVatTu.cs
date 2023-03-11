@@ -7,20 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EF
+namespace VAS_UI.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public partial class DanhMucVatTuStored
+    public partial class DanhMucVatTu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DanhMucVatTuStored()
+        public DanhMucVatTu()
         {
             this.BaoGiaVatTu = new HashSet<BaoGiaVatTu>();
         }
 
+        public System.Guid ID_Vat_tu { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập mã vật tư")]
         public string Ma_vat_tu { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập tên vật tư")]
         public string Ten_vat_tu { get; set; }

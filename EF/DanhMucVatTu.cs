@@ -20,7 +20,9 @@ namespace EF
         {
             this.BaoGiaVatTu = new HashSet<BaoGiaVatTu>();
         }
-    
+
+        public System.Guid ID_Vat_tu { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập mã vật tư")]
         public string Ma_vat_tu { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập tên vật tư")]
         public string Ten_vat_tu { get; set; }
@@ -31,7 +33,7 @@ namespace EF
         public string Don_vi_tinh { get; set; }
         public string Ghi_chu { get; set; }
         public System.DateTime Thoi_gian { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaoGiaVatTu> BaoGiaVatTu { get; set; }
     }

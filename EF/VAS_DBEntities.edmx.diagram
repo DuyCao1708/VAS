@@ -5,19 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="73d66f1cee8540d786a1ebea7b5df909" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="Model.BaoGiaVatTu" Width="1.5" PointX="6.75" PointY="1.25" />
-        <EntityTypeShape EntityType="Model.CuaHangVatTu" Width="1.5" PointX="1.25" PointY="1.5" />
-        <EntityTypeShape EntityType="Model.DanhMucVatTu" Width="1.5" PointX="8.875" PointY="1.25" />
-        <EntityTypeShape EntityType="Model.DiaChi" Width="1.5" PointX="0.5" PointY="5.375" />
-        <EntityTypeShape EntityType="Model.NguyenVatLieu" Width="1.5" PointX="19.25" PointY="1.375" />
-        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="17" PointY="2" />
-        <EntityTypeShape EntityType="Model.ThanhToanNganHang" Width="1.5" PointX="3.125" PointY="7.625" />
-        <EntityTypeShape EntityType="Model.ThanhToanTrucTiep" Width="1.5" PointX="3" PointY="4.875" />
-        <AssociationConnector Association="Model.FK_BaoGiaVatTu_CuaHangVatTu" />
-        <AssociationConnector Association="Model.FK_BaoGiaVatTu_DanhMucVatTu" />
-        <AssociationConnector Association="Model.FK_DiaChi_CuaHangVatTu1" />
-        <AssociationConnector Association="Model.FK_ThanhToanNganHang_CuaHangVatTu" />
-        <AssociationConnector Association="Model.FK_ThanhToanTrucTiep_CuaHangVatTu" />
+        <EntityTypeShape EntityType="Model.CuaHangVatTu" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="Model.DanhMucVatTu" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="Model.DiaChi" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="Model.NguyenVatLieu" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.ThanhToanNganHang" Width="1.5" PointX="3" PointY="13.5" />
+        <EntityTypeShape EntityType="Model.ThanhToanTrucTiep" Width="1.5" PointX="3" PointY="10.625" />
+        <AssociationConnector Association="Model.FK__DiaChi__ID_Cua_h__74794A92" />
+        <AssociationConnector Association="Model.FK__ThanhToan__ID_Cu__6CD828CA" />
+        <AssociationConnector Association="Model.FK__ThanhToan__ID_Cu__70A8B9AE" />
+        <EntityTypeShape EntityType="Model.BaoGiaVatTu" Width="1.5" PointX="3" PointY="3" />
+        <AssociationConnector Association="Model.FK__BaoGiaVat__ID_Cu__05A3D694" />
+        <AssociationConnector Association="Model.FK__BaoGiaVat__ID_Va__0697FACD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

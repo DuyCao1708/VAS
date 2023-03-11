@@ -69,13 +69,13 @@
                             @Html.DisplayFor(modelItem => item.Thoi_gian)
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit", "DanhMucVatTu", new { id = item.Ma_vat_tu })" class="mx-2" style="text-decoration: none" title="Chỉnh sửa">
+                            <a href="@Url.Action("Edit", "DanhMucVatTu", new { id = item.ID_Vat_tu })" class="mx-2" style="text-decoration: none" title="Chỉnh sửa">
                                 <i class="fa-solid fa-pen-to-square text-secondary"></i>
                             </a>
-                            <a href="@Url.Action("Details", "DanhMucVatTu", new { id = item.Ma_vat_tu})" class="mx-2" style="text-decoration: none" title="Chi tiêt">
+                            <a href="@Url.Action("Details", "DanhMucVatTu", new { id = item.ID_Vat_tu})" class="mx-2" style="text-decoration: none" title="Chi tiêt">
                                 <i class="fa-solid fa-circle-info text-secondary"></i>
                             </a>
-                            <a href="@Url.Action("Delete", "DanhMucVatTu", new { id = item.Ma_vat_tu })" class="mx-2" style="text-decoration: none" title="Xóa">
+                            <a href="@Url.Action("Delete", "DanhMucVatTu", new { id = item.ID_Vat_tu })" class="mx-2" style="text-decoration: none" title="Xóa">
                                 <i class="fa-solid fa-trash-can text-secondary"></i>
                             </a>
                         </td>
