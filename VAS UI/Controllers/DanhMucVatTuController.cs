@@ -37,11 +37,6 @@ namespace VAS_UI.Controllers
         // GET: DanhMucVatTu/Create
         public ActionResult Create()
         {
-            #region ViewBag
-            ViewBag.QuyChuanList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Quy_chuan);
-            ViewBag.ChungLoaiList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Chung_loai);
-            ViewBag.DonViList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Don_vi_tinh);
-            #endregion
             return View();
         }
 
@@ -52,17 +47,22 @@ namespace VAS_UI.Controllers
             try
             {
                 // TODO: Add insert logic here
+                var checkDuplication = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == newVatTu.Ma_vat_tu);
                 if (ModelState.IsValid)
                 {
-                    VAS_DBInstance.Instance.Database.DanhMucVatTu.Add(newVatTu);
-                    VAS_DBInstance.Instance.Database.SaveChanges();
-
-                    return RedirectToAction("VatTu");
+                    if (checkDuplication != null)
+                    {
+                        ModelState.AddModelError("Ma_vat_tu", "Mã vật tư đã tồn tại");
+                    }
+                    else
+                    {
+                        newVatTu.Thoi_gian = DateTime.Now;
+                        VAS_DBInstance.Instance.Database.DanhMucVatTu.Add(newVatTu);
+                        VAS_DBInstance.Instance.Database.SaveChanges();
+                        return RedirectToAction("VatTu");
+                    }
                 }
-                else
-                {
-                    return View(newVatTu);
-                }
+                return View(newVatTu);
             }
             catch
             {
@@ -82,11 +82,6 @@ namespace VAS_UI.Controllers
             {
                 return HttpNotFound();
             }
-            #region ViewBag
-            ViewBag.QuyChuanList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Quy_chuan);
-            ViewBag.ChungLoaiList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Chung_loai);
-            ViewBag.DonViList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Don_vi_tinh);
-            #endregion
             return View(VatTu);
         }
 
@@ -102,15 +97,23 @@ namespace VAS_UI.Controllers
                 {
                     return HttpNotFound();
                 }
-                VatTu.Ma_vat_tu = item.Ma_vat_tu;
-                VatTu.Ten_vat_tu = item.Ten_vat_tu;
-                VatTu.Chung_loai = item.Chung_loai;
-                VatTu.Quy_chuan = item.Quy_chuan;
-                VatTu.Don_vi_tinh = item.Don_vi_tinh;
-                VatTu.Ghi_chu = item.Ghi_chu;
-                VAS_DBInstance.Instance.Database.Entry(VatTu).State = System.Data.Entity.EntityState.Modified;
-                VAS_DBInstance.Instance.Database.SaveChanges();
-                return RedirectToAction("VatTu");
+                var checkDuplication = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == item.Ma_vat_tu);
+                if (checkDuplication != null)
+                {
+                    ModelState.AddModelError("Ma_vat_tu", "Mã vật tư đã tồn tại");
+                    return View(item);
+                }
+                else {
+                    VatTu.Ma_vat_tu = item.Ma_vat_tu;
+                    VatTu.Ten_vat_tu = item.Ten_vat_tu;
+                    VatTu.Chung_loai = item.Chung_loai;
+                    VatTu.Quy_chuan = item.Quy_chuan;
+                    VatTu.Don_vi_tinh = item.Don_vi_tinh;
+                    VatTu.Ghi_chu = item.Ghi_chu;
+                    VAS_DBInstance.Instance.Database.Entry(VatTu).State = System.Data.Entity.EntityState.Modified;
+                    VAS_DBInstance.Instance.Database.SaveChanges();
+                    return RedirectToAction("VatTu");
+                }
             }
             catch
             {

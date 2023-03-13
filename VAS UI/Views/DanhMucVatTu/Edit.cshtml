@@ -1,4 +1,6 @@
 ﻿@model EF.DanhMucVatTu
+@using VAS_UI.Logic_Functions;
+@using EF;
 
 @{
     ViewBag.Title = "Edit";
@@ -27,7 +29,6 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal mb-5">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.HiddenFor(model => model.ID_Vat_tu)
 
                     <div class="row pt-1">
@@ -35,7 +36,7 @@
                             <div class="form-group mb-3">
                                 @Html.LabelFor(model => model.Ma_vat_tu, htmlAttributes: new { @class = "control-label col-md-4 fw-bold" })
                                 <div class="col mt-1">
-                                    @Html.EditorFor(model => model.Ma_vat_tu, new { htmlAttributes = new { @class = "form-control border-0 rounded-sm w-100" } })
+                                    @Html.EditorFor(model => model.Ma_vat_tu, new { htmlAttributes = new { @class = "form-control border-0 rounded-sm w-100"} })
                                     @Html.ValidationMessageFor(model => model.Ma_vat_tu, "", new { @class = "text-danger rounded-1 w-100" })
                                 </div>
                                 <hr />
@@ -44,6 +45,10 @@
                             <div class="form-group mb-3">
                                 @Html.LabelFor(model => model.Quy_chuan, htmlAttributes: new { @class = "control-label col-md-4 fw-bold" })
                                 <div class="col mt-1">
+                                    @if (ViewBag.QuyChuanList == null)
+                                    {
+                                        ViewBag.QuyChuanList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Quy_chuan);
+                                    }
                                     @Html.DropDownListFor(model => model.Quy_chuan, ((IEnumerable<SelectListItem>)ViewBag.QuyChuanList), new { @class = "form-control border-0 rounded-sm w-100", @id = "ddlQuychuan" })
                                     @Html.ValidationMessageFor(model => model.Quy_chuan, "", new { @class = "text-danger rounded-1 w-100" })
                                 </div>
@@ -53,6 +58,10 @@
                             <div class="form-group mb-3">
                                 @Html.LabelFor(model => model.Don_vi_tinh, htmlAttributes: new { @class = "control-label col-md-4 fw-bold" })
                                 <div class="col mt-1">
+                                    @if (ViewBag.DonViList == null)
+                                    {
+                                        ViewBag.DonViList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Don_vi_tinh);
+                                    }
                                     @Html.DropDownListFor(model => model.Don_vi_tinh, ((IEnumerable<SelectListItem>)ViewBag.DonViList), new { @class = "form-control border-0 rounded-sm w-100", @id = "ddlDonvi" })
                                     @Html.ValidationMessageFor(model => model.Don_vi_tinh, "", new { @class = "text-danger rounded-1 w-100" })
                                 </div>
@@ -73,6 +82,10 @@
                             <div class="form-group mb-3">
                                 @Html.LabelFor(model => model.Chung_loai, htmlAttributes: new { @class = "control-label col-md-4 fw-bold" })
                                 <div class="col mt-1">
+                                    @if (ViewBag.ChungLoaiList == null)
+                                    {
+                                        ViewBag.ChungLoaiList = DropDownList.GetData(VAS_DBInstance.Instance.Database.DanhMucVatTu, item => item.Chung_loai);
+                                    }
                                     @Html.DropDownListFor(model => model.Chung_loai, ((IEnumerable<SelectListItem>)ViewBag.ChungLoaiList), new { @class = "form-control border-0 rounded-sm w-100", @id = "ddlChungloai" })
                                     @Html.ValidationMessageFor(model => model.Chung_loai, "", new { @class = "text-danger rounded-1 w-100" })
                                 </div>
