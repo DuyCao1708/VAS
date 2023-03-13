@@ -47,10 +47,10 @@ namespace VAS_UI.Controllers
             try
             {
                 // TODO: Add insert logic here
-                var checkDuplication = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == newVatTu.Ma_vat_tu);
+                var checkDuplication = VAS_DBInstance.Instance.Database.DanhMucVatTu.Any(x => x.Ma_vat_tu == newVatTu.Ma_vat_tu);
                 if (ModelState.IsValid)
                 {
-                    if (checkDuplication != null)
+                    if (checkDuplication == true)
                     {
                         ModelState.AddModelError("Ma_vat_tu", "Mã vật tư đã tồn tại");
                     }
@@ -97,8 +97,8 @@ namespace VAS_UI.Controllers
                 {
                     return HttpNotFound();
                 }
-                var checkDuplication = VAS_DBInstance.Instance.Database.DanhMucVatTu.FirstOrDefault(x => x.Ma_vat_tu == item.Ma_vat_tu);
-                if (checkDuplication != null)
+                var checkDuplication = VAS_DBInstance.Instance.Database.DanhMucVatTu.Where(x => x.Ma_vat_tu == item.Ma_vat_tu).ToList().Count();
+                if (checkDuplication > 1)
                 {
                     ModelState.AddModelError("Ma_vat_tu", "Mã vật tư đã tồn tại");
                     return View(item);
